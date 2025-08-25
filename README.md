@@ -224,6 +224,6 @@ For questions or suggestions, please open an issue or contact [zjihai360@gmail.c
 
 **Last Updated:** January 2025
 
-**Maintainers:** [Zhang jihai](https://github.com/Zhang jihai)
+**Maintainers:** [Zhang jihai](https://github.com/zhangjihai360)
 
 ⭐ If you find this repository helpful, please consider giving it a star!
