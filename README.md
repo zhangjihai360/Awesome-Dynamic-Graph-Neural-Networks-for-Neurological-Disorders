@@ -6,6 +6,12 @@
 
 A curated list of resources for Dynamic Graph Neural Networks (DGNNs) in neurological disorder modeling and recognition, including papers, datasets, and implementations.
 
+**Last Updated:** August 2025
+
+**Maintainers:** [Zhang jihai](https://github.com/zhangjihai360)
+
+⭐ If you find this repository helpful, please consider giving it a star!
+
 ## 📋 Table of Contents
 - [Overview](#overview)
 - [Papers by Disease/Application](#papers-by-diseaseapplication)
@@ -222,8 +228,3 @@ For questions or suggestions, please open an issue or contact [zjihai360@gmail.c
 
 ---
 
-**Last Updated:** January 2025
-
-**Maintainers:** [Zhang jihai](https://github.com/zhangjihai360)
-
-⭐ If you find this repository helpful, please consider giving it a star!
