@@ -4,7 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
-A curated list of resources for Dynamic Graph Neural Networks (DGNNs) in neurological disorder modeling and recognition, including papers, datasets, and implementations.
+A curated list of resources for Dynamic Graph Neural Networks (DGNNs) in neurological disorder modeling and recognition, including papers, datasets and tools.
 
 **Last Updated:** August 2025
 
@@ -22,13 +22,24 @@ A curated list of resources for Dynamic Graph Neural Networks (DGNNs) in neurolo
   - [Cognitive Impairment](#cognitive-impairment)
   - [Emotion Recognition](#emotion-recognition)
   - [Brain Modeling](#brain-modeling)
+- [Performance Comparison](#performance-comparison)
 - [Papers by Architecture](#papers-by-architecture)
   - [RNN-based Models](#rnn-based-models)
   - [TCN-based Models](#tcn-based-models)
   - [Attention/Transformer-based Models](#attentiontransformer-based-models)
 - [Datasets](#datasets)
 - [Tools and Resources](#tools-and-resources)
+  - [Graph Construction Tools](#graph-construction-tools)
+  - [DGNN Frameworks](#dgnn-frameworks)
+  - [Visualization Tools](#visualization-tools)
+  - [Tutorials](#tutorials)
+- [Related Surveys and Resources](#related-surveys-and-resources)
 - [Contributing](#contributing)
+  - [Contribution Guidelines](#contribution-guidelines)
+  - [Contribution Opportunities](#contribution-opportunities)
+- [Citation](#citation)
+- [License](#license)
+- [Contact](#contact)
 
 ## Overview
 
@@ -51,13 +62,14 @@ This repository maintains a comprehensive collection of research on Dynamic Grap
 | 2024 | [Time-series anomaly detection based on dynamic temporal graph convolutional network](https://doi.org/10.3390/bioengineering11010053) | TCN-based (DTGCN) | EEG | - |
 | 2022 | [Graph-generative neural network for EEG-based epileptic seizure detection](https://doi.org/10.1038/s41598-022-23656-1) | RNN-based (GGN) | EEG | [Code](https://github.com/) |
 | 2022 | [Self-supervised graph neural networks for improved electroencephalographic seizure analysis](https://doi.org/10.48550/arXiv.2104.08336) | RNN-based (GC-GRU) | EEG | - |
+| 2022 | [Seizure detection by brain-connectivity analysis using dynamic graph isomorphism network](https://doi.org/10.1109/EMBC48229.2022.9871701) | Attention-based | EEG | - |
 | 2019 | [Temporal graph convolutional networks for automatic seizure detection](https://doi.org/10.48550/arXiv.1905.01375) | TCN-based | EEG | - |
 
 ### Alzheimer's Disease
 
 | Year | Paper | Model Type | Data Type | Code |
 |------|-------|------------|-----------|------|
-| 2024 | [Predictive modeling of alzheimer's disease progression using temporal clinical factors](https://doi.org/10.1016/j.ibmed.2024.100159) | TCN+GAT | Multimodal | - |
+| 2024 | [Predictive modeling of alzheimer’s disease progression using temporal clinical factors](https://doi.org/10.1016/j.ibmed.2024.100159) | TCN+GAT | Multimodal | - |
 | 2024 | [Interpretable spatio-temporal embedding for brain structural-effective network with ODE](https://doi.org/10.1007/978-3-031-72069-7_22) | ODE-based | Multimodal | - |
 | 2021 | [DS-GCNs: Connectome classification using dynamic spectral graph convolution networks](https://doi.org/10.1093/cercor/bhaa292) | RNN-based (GC-LSTM) | rs-fMRI | - |
 | 2020 | [Dynamic functional connectivity and graph convolution network for AD classification](https://doi.org/10.48550/arXiv.2006.13510) | RNN-based (GC-LSTM) | rs-fMRI | - |
@@ -110,6 +122,20 @@ This repository maintains a comprehensive collection of research on Dynamic Grap
 | 2022 | [Revealing continuous brain dynamical organization with multimodal graph transformer](https://doi.org/10.1007/978-3-031-16431-6_33) | Transformer-based | Multimodal | - |
 | 2021 | [Learning dynamic graph representation of brain connectome with spatio-temporal attention](https://doi.org/10.48550/arXiv.2105.13495) | Attention-based (STAGIN) | fMRI | [Code](https://github.com/) |
 | 2021 | [Spatio-temporal graph convolution for resting-state fMRI analysis](https://doi.org/10.48550/arXiv.2003.10613) | TCN-based | rs-fMRI | - |
+
+## Performance Comparison
+
+The following table summarizes the performance of representative DGNN models across different neurological tasks, based on reported metrics (e.g., accuracy, F1-score) from key studies. This comparison aids in selecting appropriate models for specific applications.
+
+| Task | Model | Dataset | Accuracy (%) | F1-Score | Reference |
+|------|-------|---------|--------------|----------|-----------|
+| Epilepsy Detection | Dynamic Temporal-Spatial Graph Attention | CHB-MIT | 92.3 | 0.91 | [Yan et al., 2025](https://doi.org/10.1038/s41598-025-01015-0) |
+| Epilepsy Detection | DTGCN | CHB-MIT | 89.7 | 0.88 | [Wu et al., 2024](https://doi.org/10.3390/bioengineering11010053) |
+| Alzheimer’s Classification | GC-LSTM | ADNI | 85.4 | 0.83 | [An et al., 2020](https://doi.org/10.48550/arXiv.2006.13510) |
+| ASD Diagnosis | GNN-LSTM | ABIDE | 78.9 | 0.76 | [Tang et al., 2025](https://doi.org/10.3390/s25010156) |
+| Depression Identification | GC-LSTM | REST-meta-MDD | 80.5 | 0.79 | [Zhou et al., 2025](https://doi.org/10.1016/j.jad.2024.11.035) |
+| Emotion Recognition | Graph BERT | DEAP | 87.2 | 0.85 | [Yan et al., 2025](https://doi.org/10.1016/j.bspc.2025.107576) |
+| Emotion Recognition | GC-GRU | SEED | 84.6 | 0.82 | [Wang et al., 2025](https://doi.org/10.2298/csis250215053w) |
 
 ## Papers by Architecture
 
@@ -183,9 +209,40 @@ This repository maintains a comprehensive collection of research on Dynamic Grap
 - **Gephi**: Interactive visualization platform for networks - [Site](https://gephi.org/)
 - **NetworkX**: Network analysis in Python - [GitHub](https://github.com/networkx/networkx)
 
+### Tutorials
+
+- **Basic GC-LSTM Implementation for EEG Analysis**  
+  Below is a simplified example of a GC-LSTM model for EEG-based emotion recognition using PyTorch Geometric Temporal. This code demonstrates how to process dynamic graph snapshots for a sequence of EEG signals.
+
+  ```python
+  import torch
+  from torch_geometric_temporal.nn.recurrent import GCLSTM
+  
+  class EEG_GCLSTM(torch.nn.Module):
+      def __init__(self, node_features, hidden_dim, num_classes):
+          super(EEG_GCLSTM, self).__init__()
+          self.gclstm = GCLSTM(node_features, hidden_dim, k=1)
+          self.linear = torch.nn.Linear(hidden_dim, num_classes)
+      
+      def forward(self, x, edge_index, edge_weight):
+          h, c = None, None  # Initialize hidden and cell states
+          for t in range(x.size(0)):  # Iterate over time steps
+              h, c = self.gclstm(x[t], edge_index[t], edge_weight[t], h, c)
+          out = self.linear(h)
+          return out
+  
+  # Example usage
+  model = EEG_GCLSTM(node_features=64, hidden_dim=32, num_classes=3)
+  # Input: x (time_steps, num_nodes, node_features), edge_index (time_steps, 2, num_edges), edge_weight (time_steps, num_edges)
+  ```
+
+  For full tutorials, refer to [PyTorch Geometric Temporal Documentation](https://pytorch-geometric-temporal.readthedocs.io/).
+
 ## Related Surveys and Resources
 
 - [Graph Neural Networks in Network Neuroscience](https://doi.org/10.1109/TPAMI.2022.3209686) - IEEE TPAMI 2023
+- [Graph Neural Networks in Cancer and Oncology Research](https://doi.org/10.3390/cancers15245858) - Cancers 2023
+- [The Combination of GNN Technique and Brain Imaging for Neurological Disorders](https://doi.org/10.3390/brainsci13101462) - Brain Sciences 2023
 - [A Survey of Dynamic Graph Neural Networks](https://doi.org/10.48550/arXiv.2404.18211) - arXiv 2024
 - [Awesome Graph Neural Networks](https://github.com/GRAND-Lab/Awesome-Graph-Neural-Networks)
 - [Awesome EEG Resources](https://github.com/meagmohit/awesome-eeg)
@@ -204,6 +261,13 @@ We welcome contributions! Please feel free to submit a pull request to add new p
 2. Include complete citation information (title, authors, venue, year)
 3. Provide direct links to paper and code when available
 4. Maintain chronological order (newest first) within each section
+
+### Contribution Opportunities
+
+- Add recent papers on Parkinson's disease or bipolar disorder
+- Provide code implementations for listed papers (e.g., [Yan et al., 2025](https://doi.org/10.1038/s41598-025-01015-0))
+- Contribute benchmarks for epilepsy or depression detection
+- Suggest new datasets or visualization tools for brain network analysis
 
 ## Citation
 
@@ -225,6 +289,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## Contact
 
 For questions or suggestions, please open an issue or contact [zjihai360@gmail.com]
-
----
-
